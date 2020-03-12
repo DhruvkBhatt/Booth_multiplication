@@ -72,11 +72,11 @@ endmodule // shifter_32
 //1-bit full adder
 module fa (input wire i0, i1, cin, output wire sum, cout);
    wire t0, t1, t2;
-   xor _i0 (i0, i1, cin, sum);
-   and _i1 (i0, i1, t0);
-   and _i2 (i1, cin, t1);
-   and _i3 (cin, i0, t2);
-   or _i4 (t0, t1, t2, cout);
+   xor _i0 (sum,i0, i1, cin );
+   and _i1 (t0,i0, i1);
+   and _i2 (t1,i1, cin);
+   and _i3 (t2,cin, i0);
+   or _i4 (cout,t0, t1, t2);
 endmodule
 
 
@@ -119,9 +119,7 @@ module Adder(a,b,sum);
 	fa fa32(a[31],b[31],q[30],sum[31],cout);
 endmodule
 
-module invert(output ib,input b);
-	assign ib = ~b;
-endmodule
+
 
 //subtractor 
 //for that first 1's compliment
@@ -132,38 +130,38 @@ module subtractor(a,b,sum);
 	wire [31:0] ib;
 	wire cout;
 	wire [31:0] q;
-	invert b1(ib[0],b[0]);
-	invert b2(ib[1],b[1]);
-	invert b3(ib[2],b[2]);
-	invert b4(ib[3],b[3]);
-	invert b5(ib[4],b[4]);
-	invert b6(ib[5],b[5]);
-	invert b7(ib[6],b[6]);
-	invert b8(ib[7],b[7]);
-	invert b9(ib[8],b[8]);
-	invert b10(ib[9],b[9]);
-	invert b11(ib[10],b[10]);
-	invert b12(ib[11],b[11]);
-	invert b13(ib[12],b[12]);
-	invert b14(ib[13],b[13]);
-	invert b15(ib[14],b[14]);
-	invert b16(ib[15],b[15]);
-	invert b17(ib[16],b[16]);
-	invert b18(ib[17],b[17]);
-	invert b19(ib[18],b[18]);
-	invert b20(ib[19],b[19]);
-	invert b21(ib[20],b[20]);
-	invert b22(ib[21],b[21]);
-	invert b23(ib[22],b[22]);
-	invert b24(ib[23],b[23]);
-	invert b25(ib[24],b[24]);
-	invert b26(ib[25],b[25]);
-	invert b27(ib[26],b[26]);
-	invert b28(ib[27],b[27]);
-	invert b29(ib[28],b[28]);
-	invert b30(ib[29],b[29]);
-	invert b31(ib[30],b[30]);
-	invert b32(ib[31],b[31]);
+	not b1(ib[0],b[0]);
+	not b2(ib[1],b[1]);
+	not b3(ib[2],b[2]);
+	not b4(ib[3],b[3]);
+	not b5(ib[4],b[4]);
+	not b6(ib[5],b[5]);
+	not b7(ib[6],b[6]);
+	not b8(ib[7],b[7]);
+	not b9(ib[8],b[8]);
+	not b10(ib[9],b[9]);
+	not b11(ib[10],b[10]);
+	not b12(ib[11],b[11]);
+	not b13(ib[12],b[12]);
+	not b14(ib[13],b[13]);
+	not b15(ib[14],b[14]);
+	not b16(ib[15],b[15]);
+	not b17(ib[16],b[16]);
+	not b18(ib[17],b[17]);
+	not b19(ib[18],b[18]);
+	not b20(ib[19],b[19]);
+	not b21(ib[20],b[20]);
+	not b22(ib[21],b[21]);
+	not b23(ib[22],b[22]);
+	not b24(ib[23],b[23]);
+	not b25(ib[24],b[24]);
+	not b26(ib[25],b[25]);
+	not b27(ib[26],b[26]);
+	not b28(ib[27],b[27]);
+	not b29(ib[28],b[28]);
+	not b30(ib[29],b[29]);
+	not b31(ib[30],b[30]);
+	not b32(ib[31],b[31]);
 
 	fa fa1(a[0],ib[0],1'b1,sum[0],q[0]);
 	fa fa2(a[1],ib[1],q[0],sum[1],q[1]);
