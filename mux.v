@@ -15,7 +15,7 @@
 //
 // Revision: 
 // Revision 0.01 - File Created
-// Additional Comments: 
+// Additional Comments: multiplexer required for booth multiplication
 //
 //////////////////////////////////////////////////////////////////////////////////
 module mux2to1_1bits(input in0, input in1, input select, output muxOut);
